@@ -1,2 +1,2 @@
 # ui-astores
-React App - Spares
+React App - Vehicle Spares
