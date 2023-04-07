@@ -21,7 +21,7 @@ const ProductItemForm = (props) => {
       setAmountIsValid(false);
       return;
     }
-
+    
     props.onAddToCart(enteredAmountNumber);
   };
 
@@ -29,9 +29,9 @@ const ProductItemForm = (props) => {
     <form className={classes.form} onSubmit={submitHandler}>
       <Input
         ref={amountInputRef}
-        label='Quantity'
+        label='Amount'
         input={{
-          id: 'qty' + props.id,
+          id: 'amount' + props.id,
           type: 'number',
           min: '1',
           max: '5',
