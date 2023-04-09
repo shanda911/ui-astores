@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect } from 'react';
+import { Link,useNavigate, useLocation } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 
 import classes from './Login.css';
@@ -8,6 +9,10 @@ const LOGIN_URL = '/auth/login';
 
 const Login = () => {
     const { setAuth } = useAuth();
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
 
     const userRef = useRef();
     const pwdRef = useRef();
@@ -39,6 +44,7 @@ const Login = () => {
             const accessToken = response?.data?.accessToken;
             const roles = response?.data?.roles;
             setAuth({ email, roles, accessToken });
+            navigate(from, { replace: true });
         } catch (err) {
             if (!err?.response) {
                 setErrMsg('No Server Response');
@@ -75,7 +81,7 @@ const Login = () => {
                 ref={pwdRef}
                 required/>
             <button>login</button>
-            <p className='message'>Not registered? <a href="#">Create an account</a></p>
+            <p className='message'>Not registered? <span className="line"><Link to="/register">Sign Up</Link></span></p>
             <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
           </form>
         </div>
