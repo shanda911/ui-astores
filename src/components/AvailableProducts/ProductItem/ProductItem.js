@@ -20,7 +20,7 @@ const ProductsItem = (props) => {
   };
 
   return (
-    <li className={classes.meal}>
+    <li className={classes.item}>
       <div>
         <h3>{props.name}</h3>
         <div className={classes.description}>{props.description}</div>

@@ -3,14 +3,17 @@ import { BrowserRouter } from 'react-router-dom';
 import CartProvider from './store/CartProvider';
 
 import Main from "./routes/Main";
+import { AuthProvider } from './store/AuthProvider';
 
 function App() {
   return (
-            <CartProvider>
-            <BrowserRouter>
-              <Main />
-            </BrowserRouter>
-            </CartProvider>
+            <AuthProvider>
+              <CartProvider>
+                <BrowserRouter>
+                  <Main />
+                </BrowserRouter>
+              </CartProvider>
+            </AuthProvider>
   );
 };
 
