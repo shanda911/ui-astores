@@ -1,8 +1,18 @@
-import { NavLink } from 'react-router-dom';
-
+import { NavLink, useNavigate } from 'react-router-dom';
 import classes from './Header.module.css';
+import { useContext } from 'react';
+import AuthContext from "../../../store/AuthProvider";
 
 function MainNavigation() {
+
+  const { setAuth } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const logout = async () => {
+      setAuth({});
+      navigate('/login');
+  }
+
   return (
       <nav>
         <ul className={classes.list}>
@@ -34,6 +44,9 @@ function MainNavigation() {
             </NavLink>
           </li>
         </ul>
+        <div className={classes.logout}>
+                <button onClick={logout}>Sign Out</button>
+        </div>
       </nav>
   );
 }

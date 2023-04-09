@@ -21,3 +21,10 @@
   color: var(--color-primary-800);
   text-decoration: underline;
 }
+
+.logout {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
