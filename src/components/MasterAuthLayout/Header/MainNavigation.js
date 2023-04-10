@@ -5,13 +5,17 @@ import AuthContext from "../../../store/AuthProvider";
 
 function MainNavigation() {
 
-  const { setAuth } = useContext(AuthContext);
+  const { auth, setAuth } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const logout = async () => {
       setAuth({});
       navigate('/login');
   }
+
+  // const isAdmin = auth?.roles.include('ADMIN');
+  const isAdmin = auth?.roles.includes('ADMIN');
+
 
   return (
       <nav>
@@ -43,6 +47,16 @@ function MainNavigation() {
               Order
             </NavLink>
           </li>
+          {isAdmin &&
+          <li>
+            <NavLink
+              to="admin"
+              className={({ isActive }) =>
+                isActive ? classes.active : undefined
+              }>
+              Admin
+            </NavLink>
+          </li>}
           <div className={classes.logout}>
                 <li onClick={logout}>Sign Out</li>
         </div>

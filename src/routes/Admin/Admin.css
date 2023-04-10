@@ -1,0 +1,15 @@
+.actions h1 {
+    font: inherit;
+    cursor: pointer;
+    background-color: transparent;
+    border: 1px solid #8a2b06;
+    padding: 0.5rem 2rem;
+    border-radius: 25px;
+    margin-left: 1rem;
+  }
+  
+  .actions h1:hover{
+    background-color: #5a1a01;
+    border-color: #5a1a01;
+    color: #885038;
+  }

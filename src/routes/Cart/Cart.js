@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-
+import Card from '../../components/UI/Card';
 import CartItem from '../../components/CartItem/CartItem';
 import classes from './Cart.css';
 import CartContext from '../../store/cart-context';
@@ -23,6 +23,7 @@ const Cart = () => {
     };
 
     const cartItems = (
+        <Card>
         <ul className={classes['cart-items']}>
             {cartCtx.items.map((item) => (
                 <CartItem
@@ -35,17 +36,18 @@ const Cart = () => {
                 />
             ))}
         </ul>
+        </Card>
     );
 
     return (
         <>
             {cartItems}
-            <div className={classes.total}>
+            <div className='total'>
                 <span>Total Amount</span>
                 <span>{totalAmount}</span>
             </div>
-            <div className={classes.actions}>
-                {hasItems && <button onClick={orderHandler()} className={classes.button}>Order</button>}
+            <div className='actions'>
+                {hasItems && <button onClick={orderHandler()} className='button'>Order</button>}
             </div>
         </>
     );

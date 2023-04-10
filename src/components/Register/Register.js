@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from 'react';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from '../../api/axios';
 import classes from '../../routes/Login/Login.css';
 
@@ -68,6 +68,7 @@ const Register = () => {
                     ref={pwdRef}
                     required/>
                 <button>Register</button>
+                <p className='message'>Already registered? <span className="line"><Link to="/login">Login</Link></span></p>
                 <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
             </form>
             </div>

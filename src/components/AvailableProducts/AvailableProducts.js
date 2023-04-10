@@ -37,7 +37,11 @@ const DUMMY_PRODUCT = [
   },
 ];
 
+
+
 const AvailableProducts = () => {
+
+  const [productData, setProductData] = useState([]);
 
   const { auth } = useAuth();
   const token = auth?.accessToken;
@@ -49,9 +53,9 @@ const AvailableProducts = () => {
   const getData = async () => {
     try{
     const response = await axios.get(GET_ALL_PRODUCTS, config );
-    // console.log(response?.data);
-    // setResponseData(response);
-    console.log(response);
+    setProductData(response?.data);
+    console.log(productData);//FIXME
+    console.log(DUMMY_PRODUCT);
     }
     catch (err) {
       if (!err?.response) {
@@ -61,7 +65,6 @@ const AvailableProducts = () => {
     }
 
   useEffect(() => {
-    //FIXME
           getData();
   }, [])
 
