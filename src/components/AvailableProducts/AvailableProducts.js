@@ -55,7 +55,7 @@ const AvailableProducts = () => {
     const response = await axios.get(GET_ALL_PRODUCTS, config );
     setProductData(response?.data);
     console.log(productData);//FIXME
-    console.log(DUMMY_PRODUCT);
+    // console.log(DUMMY_PRODUCT);
     }
     catch (err) {
       if (!err?.response) {

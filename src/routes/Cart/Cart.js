@@ -3,9 +3,11 @@ import Card from '../../components/UI/Card';
 import CartItem from '../../components/CartItem/CartItem';
 import classes from './Cart.css';
 import CartContext from '../../store/cart-context';
+import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
     const cartCtx = useContext(CartContext);
+    const navigate = useNavigate();
 
     const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
     const hasItems = cartCtx.items.length > 0;
@@ -19,7 +21,8 @@ const Cart = () => {
     };
 
     const orderHandler = () => {
-        console.log(cartCtx.items);
+        // console.log(cartCtx.items);
+        navigate('/orders');
     };
 
     const cartItems = (
@@ -45,10 +48,11 @@ const Cart = () => {
             <div className='total'>
                 <span>Total Amount</span>
                 <span>{totalAmount}</span>
+                <div className='actions'>
+                    {hasItems && <button onClick={orderHandler} className='button'>Order</button>}
+                </div>
             </div>
-            <div className='actions'>
-                {hasItems && <button onClick={orderHandler()} className='button'>Order</button>}
-            </div>
+            
         </>
     );
 };
