@@ -22,16 +22,7 @@ function MainNavigation() {
               className={({ isActive }) =>
                 isActive ? classes.active : undefined
               }>
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="login"
-              className={({ isActive }) =>
-                isActive ? classes.active : undefined
-              }>
-              Login
+              Products
             </NavLink>
           </li>
           <li>
@@ -43,10 +34,20 @@ function MainNavigation() {
               Cart
             </NavLink>
           </li>
-        </ul>
-        <div className={classes.logout}>
-                <button onClick={logout}>Sign Out</button>
+        <li>
+            <NavLink
+              to="orders"
+              className={({ isActive }) =>
+                isActive ? classes.active : undefined
+              }>
+              Order
+            </NavLink>
+          </li>
+          <div className={classes.logout}>
+                <li onClick={logout}>Sign Out</li>
         </div>
+          </ul>
+
       </nav>
   );
 }

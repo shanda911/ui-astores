@@ -22,7 +22,7 @@ const Main = () => {
   return(
           <Routes>
             <Route path="/login" element={<Login />} />
-            <Route path="/Register" element={<Register />} />
+            <Route path="/register" element={<Register />} />
 
             <Route path="/" element={<MasterAuthLayout allowedRoles={[ROLES.CUSTOMER, ROLES.ADMIN]} />}>          
               <Route path="products" element={<Home />} >

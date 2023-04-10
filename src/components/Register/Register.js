@@ -1,14 +1,12 @@
 import { useRef, useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-
+import axios from '../../api/axios';
 import classes from '../../routes/Login/Login.css';
 
-import axios from '../../api/axios';
 const REGISTER_URL = '/users';
 
 const Register = () => {
     const navigate = useNavigate();
-    const [success, setSuccess] = useState(false);
 
     const userRef = useRef();
     const pwdRef = useRef();
@@ -35,9 +33,8 @@ const Register = () => {
                     withCredentials: true
                 }
             );
-            // console.log(JSON.stringify(response?.data));
+            console.log(JSON.stringify(response?.data));
             //  console.log(JSON.stringify(response));
-            setSuccess(true);
             navigate(-1);
         } catch (err) {
             if (!err?.response) {
@@ -51,9 +48,9 @@ const Register = () => {
         }
     }
 
-    return(<div className={classes['login-page']}>
-            <div className={classes.form}>
-            <div className={classes.login}>
+    return(<div className='login-page'>
+            <div className='form'>
+            <div className='login'>
                 <div className='login-header'>
                 <h3>Register</h3>
                 <p>Enter your credentials for Sign up.</p>

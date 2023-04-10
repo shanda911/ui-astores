@@ -1,8 +1,13 @@
 import Card from '../UI/Card';
 import ProductItem from './ProductItem/ProductItem';
 import classes from './AvailableProduct.css';
+import { useEffect, useState } from 'react';
+import axios from '../../api/axios';
+import useAuth from '../../hooks/useAuth';
 
-const DUMMY_MEALS = [
+const GET_ALL_PRODUCTS = '/products'
+
+const DUMMY_PRODUCT = [
   {
     id: '1',
     name: 'Air Filter',
@@ -33,20 +38,48 @@ const DUMMY_MEALS = [
 ];
 
 const AvailableProducts = () => {
-  const mealsList = DUMMY_MEALS.map((meal) => (
+
+  const { auth } = useAuth();
+  const token = auth?.accessToken;
+  
+  const config = {
+    headers: { Authorization: `Bearer ${token}` }
+  };
+
+  const getData = async () => {
+    try{
+    const response = await axios.get(GET_ALL_PRODUCTS, config );
+    // console.log(response?.data);
+    // setResponseData(response);
+    console.log(response);
+    }
+    catch (err) {
+      if (!err?.response) {
+        console.error('No Server Response');
+           }
+      }
+    }
+
+  useEffect(() => {
+    //FIXME
+          getData();
+  }, [])
+
+
+  const prodList = DUMMY_PRODUCT.map((product) => (
     <ProductItem
-      key={meal.id}
-      id={meal.id}
-      name={meal.name}
-      description={meal.description}
-      price={meal.price}
+      key={product.id}
+      id={product.id}
+      name={product.name}
+      description={product.description}
+      price={product.price}
     />
   ));
 
   return (
-    <section className={classes.meals}>
+    <section className={classes.items}>
       <Card>
-        <ul>{mealsList}</ul>
+        <ul>{prodList}</ul>
       </Card>
     </section>
   );

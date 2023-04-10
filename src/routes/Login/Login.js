@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from 'react';
 import { Link,useNavigate, useLocation } from 'react-router-dom';
-import useAuth from '../../hooks/useAuth';
+import useAuth from '../../hooks/useAuth'
 
 import classes from './Login.css';
 
@@ -12,7 +12,7 @@ const Login = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location.state?.from?.pathname || "/";
+    const from = location.state?.from?.pathname || "/products";
 
     const userRef = useRef();
     const pwdRef = useRef();

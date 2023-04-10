@@ -13,7 +13,9 @@ return(
     <>
     <button onClick={()=>setShown(true)}>Users</button>
         {shown  && <Modal onClose={hideModal}>
-        <h1>USER</h1>
+        <h1>USERS</h1>
+        <h1>AVAILABLE PRODUCTS</h1>
+        <h1>ORDERS</h1>
         </Modal>
     }</>
 );
