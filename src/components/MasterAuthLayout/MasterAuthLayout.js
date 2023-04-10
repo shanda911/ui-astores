@@ -10,7 +10,7 @@ const MasterAuthLayout = ({ allowedRoles }) => {
         auth?.roles?.find(role => allowedRoles?.includes(role))
             ? <><Headers /><Outlet /></>
             : auth?.email
-                ? <Navigate to="/login" state={{ from: location }} replace />/*FIXME: Unauth*/
+                ? <Navigate to="/unauthorized" state={{ from: location }} replace />
                 : <Navigate to="/login" state={{ from: location }} replace />
     );
 }

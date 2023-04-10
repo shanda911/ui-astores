@@ -6,11 +6,13 @@ import Login from "./Login/Login";
 
 import MasterAuthLayout from "../components/MasterAuthLayout/MasterAuthLayout";
 import Register from '../components/Register/Register'
+import UnAuth from '../components/UnAuthorized/UnAuth'
 import Home from "./Home/Home";
 import Product from "./Product/Product";
 import Admin from "./Admin/Admin";
 import Cart from "./Cart/Cart";
 import Order from "./Orders/Orders";
+
 
 const ROLES = {
   'CUSTOMER':'CUSTOMER',
@@ -23,6 +25,7 @@ const Main = () => {
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/unauthorized" element={<UnAuth />} />
 
             <Route path="/" element={<MasterAuthLayout allowedRoles={[ROLES.CUSTOMER, ROLES.ADMIN]} />}>          
               <Route path="products" element={<Home />} >
