@@ -28,7 +28,7 @@ const Main = () => {
             <Route path="/unauthorized" element={<UnAuth />} />
 
             <Route path="/" element={<MasterAuthLayout allowedRoles={[ROLES.CUSTOMER, ROLES.ADMIN]} />}>          
-              <Route path="products" element={<Home />} >
+              <Route path="/" element={<Home />} >
                 <Route path=":id" element={<Product />} />
               </Route>
               <Route path="cart" element={<Cart />} />
